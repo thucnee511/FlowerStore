@@ -56,6 +56,10 @@ public class Flower {
         return category;
     }
     
+    public void display(){
+        System.out.println(this.toString());
+    }
+    
     @Override
     public String toString(){
         String ret = String.format("%s,%s,%s,%f,%s",

@@ -37,7 +37,7 @@ public class OrderDetail {
     
     @Override
     public String toString(){
-        String ret = String.format("%s:%s:%d",id,flower.getId(),count);
+        String ret = String.format("%s,%s,%d",id,flower.getId(),count);
         return ret ;
     }
 }

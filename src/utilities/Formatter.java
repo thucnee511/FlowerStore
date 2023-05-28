@@ -28,6 +28,16 @@ public class Formatter {
         }
         return ret;
     }
+    
+    public static boolean isValidDateFormat(String date , String format){
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            Date ret = sdf.parse(date);
+        } catch (ParseException e) {
+            return false ;
+        }
+        return true;
+    }
 
     public static String toInfoLine(int arg1, String arg2, String arg3, String arg4, int arg5, Double arg6) {
         String total = String.format("$ %.0f", arg6);
