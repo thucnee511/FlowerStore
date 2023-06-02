@@ -30,7 +30,7 @@ public class OrderManager extends TreeSet<Order> {
     public void add(FlowerManager fm) {
         String id = "";
         while (true) {
-            id = Inputter.getString("Enter flower id: ", "[FXXX]", "F\\d{3}");
+            id = Inputter.getString("Enter flower id: ", "[OXXX]", "O`\\d{3}");
             if (find(id) != null) {
                 break;
             } else {

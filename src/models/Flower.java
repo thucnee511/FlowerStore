@@ -70,7 +70,7 @@ public class Flower {
             
     @Override
     public String toString(){
-        String msg = String.format("%s,%s,%s,%s,%f",
+        String msg = String.format("%s,%s,%s,%f,%d",
                 id , description , Formatter.toDateString(importDate, format) , price , category) ;
         return msg ;
     }
