@@ -28,7 +28,7 @@ public class FlowerManager extends TreeSet<Flower>{
         String id = "" ;
         while(true){
             id = Inputter.getString("Enter flower id: ","[FXXX]","F\\d{3}") ;
-            if (find(id) != null) break ;
+            if (find(id) == null) break ;
             else{
                 System.out.println("Id must be unique.");
             }

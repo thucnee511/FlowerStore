@@ -8,7 +8,7 @@ package models;
  *
  * @author Administrator
  */
-public class OrderDetail {
+public class OrderDetail implements Comparable<OrderDetail>{
     private String id ;
     private Flower flower ;
     private int quantity ;
@@ -39,5 +39,10 @@ public class OrderDetail {
         String str = String.format("%s:%s:%d",
                 id , flower.getId() , quantity);
         return str ;
+    }
+
+    @Override
+    public int compareTo(OrderDetail o) {
+        return this.id.compareTo(o.getId());
     }
 }    

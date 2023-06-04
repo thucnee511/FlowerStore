@@ -13,7 +13,7 @@ import utilities.Formatter;
  *
  * @author Administrator
  */
-public class Order {
+public class Order implements Comparable<Order>{
     private String id ;
     private String name ;
     private Date date ;
@@ -82,5 +82,10 @@ public class Order {
         String str = String.format("%s,%s,%s,%s",
                 id , Formatter.toDateString(date, format) , name , toStringDetail()) ;
         return str ;
+    }
+
+    @Override
+    public int compareTo(Order o) {
+        return this.id.compareTo(o.getId());
     }
 }

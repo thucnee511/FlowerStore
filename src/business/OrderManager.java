@@ -30,8 +30,8 @@ public class OrderManager extends TreeSet<Order> {
     public void add(FlowerManager fm) {
         String id = "";
         while (true) {
-            id = Inputter.getString("Enter flower id: ", "[OXXX]", "O`\\d{3}");
-            if (find(id) != null) {
+            id = Inputter.getString("Enter order id: ", "[OXXX]", "O\\d{3}");
+            if (find(id) == null) {
                 break;
             } else {
                 System.out.println("Id must be unique.");
@@ -52,11 +52,18 @@ public class OrderManager extends TreeSet<Order> {
                     break;
                 }
             }
+            if(fId.isEmpty()) break ;
+            Flower f = fm.find(fId);
+            if(f == null){
+                System.out.println("Flower does not exist");
+                continue ;
+            }
             int quantity = Inputter.getPositiveInt("Enter quantity: ");
             String oId = Integer.toString(countId);
-            Flower f = fm.find(fId);
             o.addDetail(new OrderDetail(oId, f, quantity));
+            countId++ ;
         }
+        this.add(o) ;
     }
 
     public Order find(String id) {
@@ -116,9 +123,9 @@ public class OrderManager extends TreeSet<Order> {
             }
         } else if (sOrd.equalsIgnoreCase("order total")) {
             if (asc) {
-                displaySet = new TreeSet<>(new CmpTotal());
-            } else {
                 displaySet = new TreeSet<>(new CmpTotal().reversed());
+            } else {
+                displaySet = new TreeSet<>(new CmpTotal());
             }
         } else {
             System.out.println("Does not exist.");

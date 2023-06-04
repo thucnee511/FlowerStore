@@ -141,4 +141,12 @@ public class Inputter {
             }
         }
     }
+    
+    public static boolean getYesOrNo(String msg){
+        Menu yesno = new Menu(msg) ;
+        yesno.addOption("Yes");
+        yesno.addOption("No");
+        yesno.print();
+        return yesno.getChoice() == 1;
+    }
 }

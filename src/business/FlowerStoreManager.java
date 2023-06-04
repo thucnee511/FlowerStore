@@ -23,10 +23,10 @@ public class FlowerStoreManager {
     private final String ORDERPATH = "\\data\\orders.dat" ;
 
     public FlowerStoreManager(String format) {
-        loadData() ;
         this.format = format;
         fm = new FlowerManager(format) ;
         om = new OrderManager(format) ;
+        loadData() ;
     }
     
     public void addFlower(){
@@ -59,8 +59,8 @@ public class FlowerStoreManager {
     
     public void loadData(){
         ArrayList<String> dta = new ArrayList<>() ;
-        dta.addAll(Loader.readFromFile(ORDERPATH));
         dta.addAll(Loader.readFromFile(FLOWERPATH));
+        dta.addAll(Loader.readFromFile(ORDERPATH));
         for(String line : dta){
             if(line == null || line.isEmpty()) continue ; 
             String[] lineSplit = line.split(",") ;
@@ -68,7 +68,7 @@ public class FlowerStoreManager {
                 fm.add(new Flower(lineSplit[0],
                 lineSplit[1] , 
                 Formatter.toDate(lineSplit[2] , format),
-                Integer.parseInt(lineSplit[3]) ,
+                Double.parseDouble(lineSplit[3]) ,
                 lineSplit[4] ,
                 format)) ;
             }else if(lineSplit[0].matches("O\\d{3}")){
@@ -83,6 +83,7 @@ public class FlowerStoreManager {
                     }
                     count++ ;
                 }
+                om.add(o) ;
             }
         }
     }

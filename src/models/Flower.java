@@ -11,7 +11,7 @@ import utilities.Formatter;
  *
  * @author Administrator
  */
-public class Flower {
+public class Flower implements Comparable<Flower>{
     private String id ;
     private String description ;
     private Date importDate ;
@@ -70,8 +70,13 @@ public class Flower {
             
     @Override
     public String toString(){
-        String msg = String.format("%s,%s,%s,%f,%d",
+        String msg = String.format("%s,%s,%s,%f,%s",
                 id , description , Formatter.toDateString(importDate, format) , price , category) ;
         return msg ;
+    }
+
+    @Override
+    public int compareTo(Flower o) {
+        return this.id.compareTo(o.getId()) ;
     }
 }
